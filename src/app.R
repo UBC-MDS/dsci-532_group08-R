@@ -6,8 +6,9 @@ library(tidyverse)
 library(plotly)
 library(here)
 
-data_raw <- read_csv('~/dsci-532_group08-R/data/processed.csv') %>%
-  mutate(work_interfere = factor(work_interfere, levels = c('Often', 'Sometimes', 'Rarely', 'Never')))
+data_raw <- read_csv('~/dsci-532_group08-R/data/processed.csv') 
+
+data_raw$work_interfere <- factor(data$work_interfere,levels = c('Often', 'Sometimes', 'Rarely', 'Never', "No mental health condition")) 
 
 app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 
@@ -126,7 +127,7 @@ app$callback(
 
     p_wi <- data_filtered %>% ggplot(aes(y = work_interfere)) +
       geom_bar(stat = 'count', fill = "#99ccff", width = 0.8) +
-      labs(x = 'Count of Records', y = '',title = 'Work interference')+
+      labs(x = 'Count of Records', y = '', title = 'Work interference')+
       theme_classic()
 
     p_wp <- data_filtered %>%
