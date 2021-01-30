@@ -7,7 +7,7 @@ library(plotly)
 library(here)
 
 data_raw <- read_csv(here('data', 'processed.csv')) %>%
-  mutate(work_interfere = factor(data$work_interfere,levels = c('Often', 'Sometimes', 'Rarely', 'Never', "No mental health condition")))
+  mutate(work_interfere = factor(work_interfere, levels = c('Often', 'Sometimes', 'Rarely', 'Never', "No mental health condition")))
 
 app <- Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
 
@@ -68,7 +68,7 @@ tab_general_overview_content <- dbcCard(
       ))
     ))
   )),
-  className="mt-3"
+  className = "mt-3"
 )
 
 #title and page tabs 
